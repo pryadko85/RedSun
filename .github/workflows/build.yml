@@ -1,0 +1,16 @@
+name: Build EXE
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: g++ RedSun.cpp -o redsun.exe
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: redsun
+          path: redsun.exe
